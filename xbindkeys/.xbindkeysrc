@@ -1,0 +1,16 @@
+
+"pulseaudio-ctl up && bash ~/.config/dunst/notify_volume.sh"
+  XF86AudioRaiseVolume
+
+"pulseaudio-ctl down && bash ~/.config/dunst/notify_volume.sh"
+  XF86AudioLowerVolume
+
+"pulseaudio-ctl mute && bash ~/.config/dunst/notify_volume.sh"
+  XF86AudioMute
+
+"xbacklight -inc 10"
+  XF86MonBrightnessUp 
+
+"xbacklight -dec 10"
+  XF86MonBrightnessDown 
+
