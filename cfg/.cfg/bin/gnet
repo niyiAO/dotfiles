@@ -1,0 +1,15 @@
+#!/bin/bash
+
+USERNAME=${1-TFakile}
+PASSWORD=${2-Akpo7@}
+
+http --form -p bh post https://1.1.1.1/login.html \
+buttonClicked=4 \
+err_flag=0 \
+err_msg= \
+info_flag=0 \
+redirect_url= \
+network_name="Guest Network" \
+username=$USERNAME \
+password=$PASSWORD \
+--verify=no --ssl=tls1

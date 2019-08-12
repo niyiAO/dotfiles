@@ -1,0 +1,31 @@
+#!/bin/bash
+
+export PATH="$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export EDITOR="nvim"
+export wksp=$HOME/docs/workspace
+
+source /usr/share/autojump/autojump.zsh
+
+alias S=sudo
+alias S!="sudo !!"
+alias la="ls -A"
+alias X="xclip -sel clip -o | xargs"
+alias vd=vidir
+alias nn=nnn
+alias vim=nvim
+alias subl=subl3
+alias clip="xclip -sel clip"
+alias serve="python -m http.server"
+
+function bak () {
+	cp "$@" "$@.bak" 
+}
+
+function termfix () {
+  infocmp | ssh $@ tic -x -
+}
+
+function mk() {
+  mkdir -p "$@" && cd "$@"
+}
+

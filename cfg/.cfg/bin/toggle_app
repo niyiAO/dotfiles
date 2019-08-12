@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$(pidof $1)" ]; then
+	killall $1
+else
+	shift
+	$@
+fi
+
+
