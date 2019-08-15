@@ -1,0 +1,18 @@
+#!/bin/bash
+
+function arrange() {
+	
+	last="$1"
+	xrandr --output "$last" --auto
+	shift
+
+	for mon in $@; do
+		xrandr --output "$mon" --right-of "$last" --auto
+		last="$mon"
+	done
+
+	feh --bg-scale ~/.cfg/images/wallpaper
+}
+
+arrange $(xrandr | awk '/ conn/ {print $1}')
+

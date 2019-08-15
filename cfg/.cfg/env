@@ -22,10 +22,10 @@ function bak () {
 }
 
 function termfix () {
-  infocmp | ssh $@ tic -x -
+	infocmp | ssh $@ tic -x -
 }
 
 function mk() {
-  mkdir -p "$@" && cd "$@"
+	mkdir -p "$@" && cd "$@"
 }
 
