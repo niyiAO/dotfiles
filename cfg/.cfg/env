@@ -6,16 +6,15 @@ export wksp=$HOME/docs/workspace
 
 source /usr/share/autojump/autojump.zsh
 
-alias S=sudo
-alias S!="sudo !!"
+alias S="sudo"
+alias i="grep"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
-alias vd=vidir
-alias nn=nnn
-alias vim=nvim
-alias subl=subl3
+alias vd="vidir"
+alias nn="nnn"
+alias vim="nvim"
+alias subl="subl3"
 alias clip="xclip -sel clip"
-alias serve="python -m http.server"
 
 function bak () {
 	cp "$@" "$@.bak" 
