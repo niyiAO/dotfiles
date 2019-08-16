@@ -1,0 +1,77 @@
+background no
+use_xft yes
+xftfont Sans:size=8
+xftalpha 1
+update_interval 1
+human_readable yes
+border_width 2
+border_inner_margin 10
+border_outer_margin 5
+total_run_times 0
+own_window yes
+own_window_title Conky
+own_window_type override
+own_window_transparent no
+own_window_colour {color0.strip}
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual no
+# own_window_argb_value 0
+double_buffer yes
+minimum_size 300 20
+maximum_width 300
+default_shade_color 000
+draw_shades yes
+draw_outline no
+draw_borders yes
+draw_graph_borders yes
+default_color {color2.strip}
+alignment bottom_left
+gap_x 50
+gap_y 50
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+pad_percents 2
+
+color0 {color7.strip}
+color1 {color2.strip}
+
+font0 ShareTechMono:normal:size=10
+font1 FantasqueSansMono:normal:size=12
+font3 FantasqueSansMono:bold:size=12
+
+font4 Font Awesome 5 Free:style=Solid:size=12
+font5 ShareTechMono:normal:size=9
+
+font6 Sans:normal:size=2
+font7 Sans:normal:size=8
+
+TEXT
+$color1${{font3}}Usage$font6
+${{hr 2}}<$font7
+$color0\
+${{font3}}cpu $alignr$font5$cpu%$font7
+${{font3}}temp $alignr$font5${{execi 8 sensors | grep 'Core 0' | awk '{{print substr($3,2,6)}}'}}$font7
+${{font3}}memory $alignr$font5$mem$font7
+${{font3}}uptime $alignr$font5$uptime_short$font7\
+\
+${{if_mpd_playing}}$font7
+
+$color1${{font3}}Music$font6
+${{hr 2}}$font7
+$font3$color0$mpd_title$font7
+$font1$mpd_artist\
+$color1$font0$alignr[$color0$mpd_elapsed$color1/$color0$mpd_length$color1]\
+${{endif}}\
+\
+${{if_match "${{wireless_mode wlp3s0}}" == "Managed"}}$font7
+
+$color1${{font3}}Network$font6
+${{hr 2}}$font7
+$color0$font3${{wireless_essid wlp3s0}}\
+$font0$alignr${{totaldown wlp3s0}}/${{totalup wlp3s0}}$font7
+$font0${{addr wlp3s0}}\
+$font0$alignr ${{downspeedf wlp3s0}}KiB/${{upspeedf wlp3s0}}KiB$font7
+
+${{endif}}

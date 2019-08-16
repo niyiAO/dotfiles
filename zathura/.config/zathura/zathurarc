@@ -1,0 +1,10 @@
+set adjust-open width
+set statusbar-basename true
+set recolor-darkcolor \#fbf1c7
+set recolor-lightcolor \#1c1c1c
+
+map a adjust_window width
+set statusbar-bg \#232323
+set default-bg \#000000
+set statusbar-fg \#F0F0F0
+set guioptions "s"

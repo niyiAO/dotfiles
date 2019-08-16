@@ -1,0 +1,210 @@
+
+[colors]
+
+background = ${xrdb:color0}
+background-alt = ${xrdb:color8}
+
+foreground = ${xrdb:color7}
+foreground-alt = ${xrdb:color15}
+alert = ${xrdb:color1}
+transparent = rgba(0, 0, 0, 0)
+
+[bar/main]
+monitor = eDP1
+dpi = 144
+width = 100%
+height = 30
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.transparent}
+foreground = ${colors.foreground}
+
+spacing = 0
+line-size = 5
+
+border-size = 5
+border-color = ${self.background}
+
+module-margin = 0
+
+font-0 = ShareTechMono:size=10;3
+font-1 = icomoon:pixelsize=10;3
+
+modules-left = xwindow 
+modules-center = i3
+modules-right =  wlan temperature xbacklight pulseaudio battery date
+
+; tray-position = right
+tray-padding = 2
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+label-font = 3
+label-padding = 1
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+format-padding = 1
+label-focused-font = 2
+label-state-font = 2
+label-unfocused-font = 2
+label-visible-font = 2
+label-urgent-font = 2
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 1
+label-mode-background = ${colors.alert}
+; focused = Active workspace on focused monitor
+label-focused = [%index%]
+label-focused-padding = 0 
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1 
+
+; visible = Active workspace on unfocused monitor
+
+label-visible = <%index%>
+label-visible-padding = 0 
+
+; urgent = Workspace with urgency hint set
+label-urgent = *%index%
+label-urgent-padding-left = 0 
+label-urgent-padding-right = 1 
+
+; Separator in between workspaces
+label-separator-font = 2
+; label-separator = "'"
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = BL:<label> 
+label = %percentage:3%%
+format-padding = 1
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected-padding = 1
+format-connected = WL:<label-connected>
+label-connected = %essid%
+
+format-disconnected =
+
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+label-font = 3
+date =
+date-alt = "%b %d"
+
+time = "%H:%M "
+time-alt = 
+
+label = %date% %time%
+label-padding-left = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+
+format-volume = VOL:<label-volume> 
+label-volume = %percentage:3%%
+
+format-volume-padding = 1
+
+label-muted-padding = 1
+label-muted = MUTED
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 99
+
+format-full = 
+format-charging-padding = 1
+
+format-discharging-padding = 1
+format-charging = CHRG:<label-charging>
+
+format-discharging = BAT:<label-discharging>
+
+label-charging = %percentage:3%%
+label-discharging = %percentage:3%%
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 48
+
+format = 
+format-warn = TEMP:<label-warn>
+
+format-warn-underline = ${colors.alert}
+format-warn-padding = 1
+label = %temperature-c%
+label-warn = %temperature-c%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
