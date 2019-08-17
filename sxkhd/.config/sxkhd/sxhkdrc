@@ -1,0 +1,33 @@
+super + d
+	rofi -show drun -show-icons
+
+super + x
+	termite -e nnn
+
+super + m
+	termite -e ncmpcpp
+
+super + shift + s
+	cd ~/media/pictures && scrot
+
+super + slash
+	~/.cfg/bin/toggle_app polybar polybar main
+
+super + ctrl + l
+	dm-tool lock
+
+super + Return
+	termite
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pulseaudio-ctl {up,down,mute} && bash ~/.config/dunst/notify_volume.sh
+
+XF86MonBrightness{Up,Down}
+	xbacklight -{inc,dec} 10
+
+XF86Display
+	bash ~/.cfg/bin/mul-monitors
+
+XF86PowerOff
+	rofi -modi 'powermenu:~/.cfg/bin/powermenu.sh' -show powermenu
+
