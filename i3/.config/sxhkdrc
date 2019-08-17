@@ -1,0 +1,57 @@
+super + q
+	i3-msg kill
+
+super + {Left,Right,Up,Down}
+	i3-msg focus {left,right,up,down}
+
+super + shift + {Left,Right,Up,Down}
+	i3-msg move {left,right,up,down}
+
+super + {h,v}
+	i3-msg split {h,v}
+
+super + f
+	i3-msg fullscreen toggle
+
+super + w
+	i3-msg layout tabbed
+
+super + e
+	i3-msg layout toggle split
+
+super + shift + space
+	i3-msg floating toggle
+
+super + space
+	i3-msg focus mode_toggle
+
+super + a
+	i3-msg focus parent
+
+super + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg workspace {1,2,3,4,5,6,7,8,9,0}
+
+super + o
+	i3-msg move workspace to output right
+
+super + shift + {1,2,3,4,5,6,7,8,9,0}
+	i3-msg move container to workspace {1,2,3,4,5,6,7,8,9,0}
+
+super + alt + {Left,Right}
+	i3-msg resize {shrink,grow} width 10 px or 10 ppt
+
+super + alt + {Up,Down}
+	i3-msg resize {shrink,grow} height 10 px or 10 ppt
+
+super + shift + alt + {Left,Right}
+	i3-msg resize {shrink,grow} width 5 px or 5 ppt
+
+super + shift + alt + {Up,Down}
+	i3-msg resize {shrink,grow} height 5 px or 5 ppt
+
+super + shift + {c,r}
+	i3-msg {reload,restart}
+
+super + shift + e
+	i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'
+
