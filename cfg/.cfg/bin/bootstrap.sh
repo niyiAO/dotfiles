@@ -5,8 +5,8 @@ function runIfNot() {
 }
 
 
-wal -R
 feh --bg-scale ~/.cfg/images/wallpaper
+wal -R
 xbindkeys
 runIfNot polybar main 
 runIfNot compton  

@@ -16,3 +16,7 @@
 
 "bash ~/.cfg/bin/mul-monitors"
   XF86Display
+
+"rofi -modi 'powermenu:powermenu.sh' -show powermenu"
+  XF86PowerOff
+
