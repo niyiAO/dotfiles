@@ -13,29 +13,20 @@ super + {h,v}
 super + f
 	i3-msg fullscreen toggle
 
-super + w
-	i3-msg layout tabbed
+super + {w, e}
+	i3-msg layout {tabbed, toggle split}
 
-super + e
-	i3-msg layout toggle split
-
-super + shift + space
+super + s
 	i3-msg floating toggle
 
-super + space
-	i3-msg focus mode_toggle
+super + {space, a}
+	i3-msg focus {mode_toggle, parent}
 
-super + a
-	i3-msg focus parent
-
-super + {1,2,3,4,5,6,7,8,9,0}
-	i3-msg workspace {1,2,3,4,5,6,7,8,9,0}
+super + {shift +,_} {1-9,10}
+	i3-msg {move container to ,_}workspace {1-9,10}
 
 super + o
 	i3-msg move workspace to output right
-
-super + shift + {1,2,3,4,5,6,7,8,9,0}
-	i3-msg move container to workspace {1,2,3,4,5,6,7,8,9,0}
 
 super + alt + {Left,Right}
 	i3-msg resize {shrink,grow} width 10 px or 10 ppt
