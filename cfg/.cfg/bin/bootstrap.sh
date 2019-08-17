@@ -7,6 +7,8 @@ function runIfNot() {
 
 feh --bg-scale ~/.cfg/images/wallpaper
 wal -R
+
+killall sxhkd
 sxhkd $1 &
 runIfNot polybar main 
 runIfNot compton  
