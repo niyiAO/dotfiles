@@ -34,7 +34,7 @@ font-0 = ShareTechMono:size=10;3
 font-1 = icomoon:pixelsize=10;3
 
 modules-left = xwindow 
-modules-center = i3
+modules-center = i3 bspwm
 modules-right =  wlan temperature xbacklight pulseaudio battery date
 
 ; tray-position = right
@@ -60,6 +60,30 @@ label = %title:0:30:...%
 
 label-font = 3
 label-padding = 1
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state> <label-mode>
+format-padding = 1
+
+label-empty = 
+
+label-focused = [%index%]
+label-focused-padding = 0
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = *%index%
+label-urgent-padding-left = 0 
+label-urgent-padding-right = 1 
+
+label-focused-font = 2
+label-state-font = 2
+label-occupied-font = 2
+label-empty-font = 2
+label-urgent-font = 2
 
 [module/i3]
 type = internal/i3
