@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+if pidof mpv; then
+	echo loadfile \"$1\" append > ~/.config/mpv/mpv-pipe
+else
+	mpv "$1"
+fi
+
