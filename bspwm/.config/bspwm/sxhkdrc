@@ -18,7 +18,7 @@ super + y
 
 # swap the current node and the biggest node
 super + g
-	bspc node -s biggest
+	bspc node -s biggest.local
 
 #
 # state/flags
@@ -77,6 +77,7 @@ super + c
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
+
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
@@ -84,6 +85,9 @@ super + ctrl + shift + space
 #
 # move/resize
 #
+
+super + {_,shift +} {minus,equal}
+	bspc node @parent{_,@parent} -r {-,+}0.05
 
 # expand a window by moving one of its side outward
 super + alt + {Left,Down,Up,Right}
