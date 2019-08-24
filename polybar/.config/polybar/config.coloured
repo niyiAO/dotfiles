@@ -47,7 +47,7 @@ transparent = rgba(0, 0, 0, 0)
 monitor = eDP1
 dpi = 144
 width = 100%
-height = 30
+height = 28
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -59,7 +59,7 @@ foreground = ${colors.background}
 spacing = 0
 line-size = 5
 
-border-size = 5
+border-size = 8
 border-color = ${self.background}
 
 padding-left = 1
@@ -70,7 +70,7 @@ module-margin = 0
 font-0 = ShareTechMono:size=10;3
 font-1 = icomoon:pixelsize=10;3
 
-modules-left = i3 mpd
+modules-left = i3 bspwm mpd
 modules-center = xwindow
 modules-right =  eth wlan temperature xbacklight pulseaudio battery date
 
@@ -78,7 +78,7 @@ modules-right =  eth wlan temperature xbacklight pulseaudio battery date
 tray-padding = 2
 tray-background = ${colors.color4}
 
-;wm-restack = bspwm
+wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -99,6 +99,32 @@ label = %title:0:30:...%
 label-font = 3
 label-background = ${colors.color2}
 label-padding = 1
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state> <label-mode>
+format-padding = 1
+
+format-background = ${colors.color4} 
+
+label-empty = 
+
+label-focused = [%index%]
+label-focused-padding = 0
+
+label-occupied = %index%
+label-occupied-padding = 1
+
+label-urgent = *%index%
+label-urgent-padding-left = 0 
+label-urgent-padding-right = 1 
+
+label-focused-font = 2
+label-state-font = 2
+label-occupied-font = 2
+label-empty-font = 2
+label-urgent-font = 2
 
 [module/i3]
 type = internal/i3
@@ -333,7 +359,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = -5
 
 ; vim:ft=dosini
