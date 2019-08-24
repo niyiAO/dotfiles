@@ -16,6 +16,10 @@ alias vim="nvim"
 alias subl="subl3"
 alias clip="xclip -sel clip"
 
+function pan () {
+	man -t "$@" | ps2pdf - | zathura - --fork
+}
+
 function bak () {
 	cp "$@" "$@.bak" 
 }
