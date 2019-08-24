@@ -4,19 +4,19 @@ super + Escape
 super + d
 	rofi -show drun -show-icons
 
-super + x
-	termite -e nnn
+super + x; {m,X,E,n}
+	termite -e {ncmpcpp,nnn,nvim,nmtui}
 
-super + m
-	termite -e ncmpcpp
+super + x; {f,e,x}
+	{firefox,subl3,thunar}
 
-super + shift + s
+super + Print
 	cd ~/media/pictures && scrot
 
 super + slash
 	~/.cfg/bin/toggle_app polybar polybar main
 
-super + ctrl + l
+super + l
 	dm-tool lock
 
 super + Return
