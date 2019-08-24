@@ -12,6 +12,7 @@
 ##
 #
 ncmpcpp_directory = ~/.config/ncmpcpp
+execute_on_song_change =notify-send "Now Playing" "$(mpc current)"
 #
 ##
 ## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
