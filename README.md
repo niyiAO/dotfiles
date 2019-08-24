@@ -11,7 +11,7 @@
 ## WM and ricing
 - i3-gaps
 - compton (tryone-git)
-- xbindkeys
+- sxhkd
 - conky (pywal template)
 - termite (pywal template)
 - polybar
