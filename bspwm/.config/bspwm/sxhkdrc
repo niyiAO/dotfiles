@@ -20,9 +20,15 @@ super + y
 super + g
 	bspc node -s biggest.local
 
-#
+super + r
+	bspc query -T --node @parent |\
+	jq -r .splitType |\
+	xargs bspc node @parent -F
+
+super + e
+	bspc node @parent -E
+
 # state/flags
-#
 
 # set the window state
 super + {t,shift + t,shift + space,f}
