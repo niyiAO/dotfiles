@@ -1,7 +1,6 @@
 
 * {
-
-	font: "FanatsqueSansMono 16";
+	font: "FantasqueSansMono 12";
 	foreground: #bebdbb;
 	background: rgba(12, 12, 17, 0.5);
 	transparent: rgba(0, 0, 0, 0);
