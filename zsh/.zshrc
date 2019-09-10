@@ -1,6 +1,6 @@
 
 # Path to oh-my-zsh installation.
-export ZSH="/home/niyi_ao/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ys-custom"
 # CASE_SENSITIVE="true"
