@@ -2,7 +2,7 @@ let mapleader = " "
 map <Space> <Leader> 
 
 nnoremap + ddp
-nnoremap - ddkkp 
+nnoremap - :.move-2<CR>
 nnoremap <C-n> :set relativenumber!<CR>
 nnoremap ; :
 nnoremap <Leader>- :split<CR>
