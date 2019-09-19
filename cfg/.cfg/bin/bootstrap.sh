@@ -5,7 +5,7 @@ function runIfNot() {
 }
 
 
-feh --bg-scale ~/.cfg/images/wallpaper
+feh --bg-fill ~/.cfg/images/wallpaper
 wal -R
 
 killall sxhkd
