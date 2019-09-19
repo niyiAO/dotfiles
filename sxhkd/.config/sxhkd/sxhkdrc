@@ -8,7 +8,7 @@ super + d
 	rofi -show drun -show-icons
 
 super + x; {m,X,E,n}
-	termite -e {ncmpcpp,'nnn -l' --class NNN,nvim,nmtui}
+	termite -e {ncmpcpp,nnn --class NNN,nvim,nmtui}
 
 super + x; {f,e,x}
 	{firefox,subl3,thunar}
