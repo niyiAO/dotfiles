@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if test "${1#@}" = "$1"; then
+	folder="${NOTE_DIR}/$(date +%y-%m-%d)"
+else
+	folder="${NOTE_DIR}/$(date +%y-%m-%d -d "${1#@}")"
+	test $? -eq 0 || exit $?
+	shift
+fi
+
+mkdir -p "$folder"
+(cd $folder; $EDITOR ${*:-$folder})
+
+rm -d "$folder" &> /dev/null
+exit 0
+

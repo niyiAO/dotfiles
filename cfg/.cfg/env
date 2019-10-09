@@ -2,6 +2,9 @@
 
 export PATH="$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export EDITOR="nvim"
+export TERMINAL="termite"
+
+export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
 
 source /usr/share/autojump/autojump.zsh
