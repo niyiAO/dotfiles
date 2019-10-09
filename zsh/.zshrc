@@ -15,10 +15,14 @@ ZSH_THEME="ys-custom"
 
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-
-plugins=(git)
-
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+
+bindkey -s '^z' '^Qfg^M'
+bindkey -s '^[l' '^Qls^M'
+bindkey '^ ' autosuggest-accept
+bindkey '^[e' edit-command-line
+
 source $HOME/.cfg/env
 
 # export MANPATH="/usr/local/man:$MANPATH"
