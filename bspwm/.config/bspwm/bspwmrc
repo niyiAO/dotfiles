@@ -2,7 +2,7 @@
 
 if [ -f "$HOME/.cache/wal/colors.sh" ]; then
 	source "$HOME/.cache/wal/colors.sh"
-	bspc config normal_border_color ${color7}
+	bspc config normal_border_color ${color8}
 	bspc config focused_border_color ${color2}
 	bspc config presel_feedback_color ${color2}
 fi
@@ -22,4 +22,4 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Screenkey manage=off
-bspc rule -a NNN state=floating
+bspc rule -a FLOATERM state=floating sticky=true
