@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="$HOME/.cache/npm-packages/bin:$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export EDITOR="nvim"
 export TERMINAL="termite"
 
@@ -18,6 +18,7 @@ alias nn="nnn"
 alias vim="nvim"
 alias subl="subl3"
 alias clip="xclip -sel clip"
+alias tat='tmux new -As "$PWD"'
 
 function pan () {
 	man -t "$@" | ps2pdf - | zathura - --fork
