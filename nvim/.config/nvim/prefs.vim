@@ -9,3 +9,4 @@ let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
 autocmd FileType html,css EmmetInstall
 
+filetype plugin on
