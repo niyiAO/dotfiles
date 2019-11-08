@@ -13,4 +13,4 @@ sxhkd $1 &
 runIfNot polybar main 
 runIfNot compton  
 runIfNot conky  
-
+runIfNot xfce4-power-manager
