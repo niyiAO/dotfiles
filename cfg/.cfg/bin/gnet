@@ -1,7 +1,7 @@
 #!/bin/bash
 
-USERNAME=${1-TFakile}
-PASSWORD=${2-Akpo7@}
+USERNAME=${1-Jubril}
+PASSWORD=${2-qes2obf6}
 
 http --form -p bh post https://1.1.1.1/login.html \
 buttonClicked=4 \

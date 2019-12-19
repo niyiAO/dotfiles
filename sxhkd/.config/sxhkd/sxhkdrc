@@ -7,6 +7,9 @@ super + Escape
 super + d
 	rofi -show drun -show-icons
 
+super + shift + d
+	bash ~/.cfg/bin/tmux-browser.sh
+
 super + x; {m,X,n}
 	termite --class FLOATERM -e {ncmpcpp,nnn,nmtui}
 
