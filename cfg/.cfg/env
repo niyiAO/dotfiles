@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="$HOME/.cache/npm-packages/bin:$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="$HOME/.dotnet/tools:$HOME/.cache/npm-packages/bin:$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export EDITOR="nvim"
 export TERMINAL="termite"
 
@@ -10,7 +10,8 @@ export wksp=$HOME/docs/workspace
 source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
-alias i="grep"
+alias i="grep -i"
+alias ff="find -type f -iname"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
 alias vd="vidir"

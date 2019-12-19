@@ -29,4 +29,4 @@ source $HOME/.cfg/env
 # export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 autoload zmv
-
+eval "$(direnv hook zsh)"
