@@ -12,6 +12,7 @@ nnoremap <Leader><Leader>w :x<CR>
 nnoremap <Leader><Leader>q :q!<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <C-\> <Esc>:NERDTreeToggle<CR>
+nnoremap <C-l> :noh<CR>
 
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
