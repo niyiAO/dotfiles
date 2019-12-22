@@ -7,12 +7,12 @@ if [ -f "$HOME/.cache/wal/colors.sh" ]; then
 	bspc config presel_feedback_color ${color1}
 fi
 
-
+export TERMINAL=alacritty
 ~/.cfg/bin/bootstrap.sh ~/.config/bspwm/sxhkdrc
 
 bspc monitor -d 1 2 3 4 5
 
-bspc config border_width          4
+bspc config border_width          2
 bspc config window_gap            35
 bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
@@ -22,4 +22,9 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Screenkey manage=off
+bspc rule -a feh state=floating
+bspc rule -a Thunar state=pseudo_tiled
 bspc rule -a FLOATERM state=floating sticky=true
+bspc rule -a *:FLOATERM state=floating sticky=true
+
+#~/.config/bspwm/dygap.py 1 8 90 -2 &

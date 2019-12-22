@@ -6,5 +6,5 @@ if [ -n "$PDIR" ]; then
 	cd $HOME
 	FDIR=$(readlink -f $PDIR)
 	cd $PDIR
-	termite --class FLOATERM -e "tmux new -As $FDIR"
+	$TERMINAL --class FLOATERM -e "tmux new -As $FDIR"
 fi

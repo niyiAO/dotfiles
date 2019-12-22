@@ -10,11 +10,14 @@ super + d
 super + shift + d
 	bash ~/.cfg/bin/tmux-browser.sh
 
+super + u
+	~/.cfg/bin/usage
+
 super + x; {m,X,n}
-	termite --class FLOATERM -e {ncmpcpp,nnn,nmtui}
+	$TERMINAL --class FLOATERM -e {ncmpcpp,nnn,nmtui}
 
 super + x; {f,e,x,E}
-	{firefox,subl3,thunar, termite -e nvim}
+	{firefox,subl3,thunar, $TERMINAL -e nvim}
 
 super + Print
 	cd ~/media/pictures && scrot
@@ -26,7 +29,7 @@ super + l
 	dm-tool lock
 
 super + { ,shift + } Return
-	termite { ,--title scratchpad --class FLOATERM -e 'tmux new -As scratch'}
+	$TERMINAL { ,--title scratchpad --class FLOATERM -e tmux new -As scratch}
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pulseaudio-ctl {up,down,mute} && bash ~/.config/dunst/notify_volume.sh
