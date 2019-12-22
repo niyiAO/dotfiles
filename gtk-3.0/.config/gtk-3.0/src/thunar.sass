@@ -1,0 +1,116 @@
+@import 'colors'
+
+$cBackground: $background
+$cPrimary: $color1
+$cForeground: $foreground
+$cPrimaryFG: $foreground
+$cHiglight: scale-color($cPrimary, $lightness: 20%, $saturation: 40%)
+
+menuitem:hover
+	background-color: scale-color($cPrimary, $lightness: 50%, $saturation: 40%)
+
+.thunar scrollbar slider
+	background-color: $cPrimary
+
+	&:hover
+		background-color: change-color($cPrimary, $alpha: 0.7)
+
+	&:active
+		background-color: $cPrimary
+
+.thunar button
+	transition: 200ms cubic-bezier(0, 0, 0.2, 1)
+	border-radius: 0
+
+	&:hover
+		background-color: change-color($cPrimary, $alpha: 0.5)
+
+	&:disabled
+		opacity: 0.6
+
+	&:active
+		color: $cPrimaryFG
+		background-color: $cPrimary
+
+.thunar label
+	color: $cForeground
+
+.thunar *
+	border-color: darken($cForeground, 60%)
+
+.thunar separator
+	background-image: none
+	background-size: 0
+	background-color: darken($cForeground, 60%)
+
+.thunar statusbar
+	margin-left: -10px
+
+notebook header,
+notebook header tab,
+.thunar,
+.thunar toolbar,
+.thunar image,
+.thunar scrollbar,
+.thunar scrolledwindow widget,
+.thunar statusbar
+	background-color: $cBackground
+	color: $cForeground
+
+.thunar toolbar
+	padding: 0
+	font-size: 1.1em
+
+	& *
+		box-shadow: none
+		text-shadow: none
+		border: none
+		background: none
+
+	& entry
+
+		padding: 3px
+		border: none
+		color: $cForeground
+
+	& selection
+		color: $cPrimaryFG
+		background-color: change-color($cHiglight, $alpha: 0.3)
+
+.thunar .path-bar
+	padding: 0 100px
+
+	.path-bar-button
+		transition: 150ms
+		padding-bottom: 5px
+		border: none
+
+		&:checked
+			border-bottom: 5px solid change-color($cPrimary, $alpha: 0.8)
+			padding-bottom: 0px
+
+.thunar treeview
+	$treeview-bg: change-color($cPrimary, $lightness: 30%)
+	background-color: $treeview-bg
+	color: $cPrimaryFG
+
+	& .view:selected
+		background-color: scale-color($treeview-bg, $lightness: 10%)
+
+
+	& .view:hover
+		background-color: scale-color($treeview-bg, $lightness: 10%)
+		border: 1px solid $cPrimary
+
+.thunar .rubberband 
+	border: 1px solid $cPrimary
+	background-color: change-color($cPrimary, $alpha: 0.3)
+
+.thunar .standard-view
+
+	.view:selected
+		background-color: change-color($cHiglight, $alpha: 0.3)
+		border: 1px solid $cPrimary
+
+	.view:hover
+		background-color: change-color($cHiglight, $alpha: 0.3)
