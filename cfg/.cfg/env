@@ -26,7 +26,7 @@ function pan () {
 }
 
 function bak () {
-	cp "$@" "$@.bak" 
+	cp -r "$@" "$@.bak" 
 }
 
 function termfix () {

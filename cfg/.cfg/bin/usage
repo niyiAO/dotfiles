@@ -1,0 +1,53 @@
+#!/bin/sh
+
+function cpu_hogs() {
+	ps -Ao comm,%cpu k -%cpu --noheading |\
+		head -n7 |\
+		awk '{print $0 "%"}'
+}
+
+function disk_usage() {
+	df -h | grep MainVG |\
+		awk '{printf "%s %s/%s\n", $6, $4, $2}' |\
+		column -t
+}
+
+function mem_hogs() {
+	ps -eo comm,%mem k -%mem --noheading |\
+		head -n7 | awk '{print $0 "%"}'
+}
+
+function mem_total() {
+	free -h | awk '/Mem:/ {print $3 "/" $2}'
+}
+
+function cpu_total() {
+	grep 'cpu ' /proc/stat |\
+		awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}' |\
+		sed 's/\..*//' | awk '{print $1 "%"}'
+}
+
+function details() {
+cat <<EOF
+
+$(uptime -p | fmt -w 11)
+
+[memory]
+
+$(mem_hogs)
+
+total: $(mem_total)
+
+[cpu]
+
+$(cpu_hogs)
+
+total: $(cpu_total)
+
+[storage]
+
+$(disk_usage)
+EOF
+}
+
+notify-send "usage" "$(details)"
