@@ -27,4 +27,4 @@ bspc rule -a Thunar state=pseudo_tiled
 bspc rule -a FLOATERM state=floating sticky=true
 bspc rule -a *:FLOATERM state=floating sticky=true
 
-#~/.config/bspwm/dygap.py 1 8 90 -2 &
+~/.config/bspwm/dygap 1 6 35 -2 &

@@ -1,0 +1,100 @@
+#!/usr/bin/env ruby
+
+def desktops
+  %x(bspc query -D -n .leaf)
+    .split("\n")
+end
+
+def count desktop
+  tiled = %x(bspc query -N -d #{desktop} -n .leaf.tiled).split("\n")
+  pseudo_tiled =  %x(bspc query -N -d #{desktop} -n .leaf.pseudo_tiled).split("\n")
+
+  return pseudo_tiled.size + tiled.size
+end
+
+def setup_window_scaling(node_range, gap_range)
+  xa, xb = node_range.map(&:to_f)
+  ya, yb = gap_range.map(&:to_f)
+
+  gradient = (yb - ya)/(xb - xa)
+  intercept = ya - gradient/xa
+
+  lambda { | desktop, count |
+    return unless (xa..xb) === count
+    wgap = (gradient * count.to_f + intercept).round
+    %x(bspc config -d #{desktop} window_gap #{wgap})
+  }
+end
+
+def bspc_subscribe channels
+  emitter = IO.popen "bspc subscribe #{channels.join(' ')}"
+
+  while true
+    yield emitter.readline.strip.split
+  end
+end
+
+def get_counts
+  counter = Hash.new(0)
+
+  desktops.each { |desktop|
+    counter[desktop] = count desktop
+  }
+
+  return counter
+end
+
+$0='dygap'
+nl, nu, gl, gu = ARGV.map &:to_i
+set_windowgap = setup_window_scaling([nl, nu], [gl, gu])
+counter = get_counts
+original = %x{bspc config window_gap}
+
+channels = [
+  "node_add",
+  "node_remove",
+  "node_state",
+  "node_transfer"
+]
+
+counter.each do |desktop, nodes|
+  set_windowgap.call desktop, nodes
+end
+
+begin
+  bspc_subscribe(channels) do |event|
+    action, *args = event
+
+    case action
+    when "node_add"
+     monitor, desktop, ip, node = args
+     counter[desktop] += 1
+
+     set_windowgap.call desktop, counter[desktop]
+    when "node_remove"
+     monitor, desktop, ip, node = args
+     counter[desktop] = count desktop
+
+     set_windowgap.call desktop, counter[desktop]
+    when "node_transfer"
+
+      smonitor, sdesktop, snode,
+      dmonitor, ddesktop, dnode = args
+      counter[ddesktop] = count ddesktop
+      counter[sdesktop] = count sdesktop
+
+      set_windowgap.call sdesktop, counter[sdesktop]
+      set_windowgap.call ddesktop, counter[ddesktop]
+    when "node_state"
+      monitor, desktop, node, mode, state = args
+
+      if /tiled/ === mode
+        counter[desktop] += (state == 'on' ? +1 : -1)
+        set_windowgap.call desktop, counter[desktop]
+      end
+    end
+  end
+rescue
+  %x(bspc config window_gap #{original})
+end
+
