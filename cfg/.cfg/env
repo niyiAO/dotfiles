@@ -6,6 +6,7 @@ export TERMINAL="termite"
 
 export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
+export GOPATH=$HOME/docs/go
 
 source /usr/share/autojump/autojump.zsh
 
