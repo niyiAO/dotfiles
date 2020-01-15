@@ -20,6 +20,8 @@ nnoremap <Leader><Leader>p "*p
 nnoremap <Leader><Leader><Leader> <nop>
 nnoremap <Leader><Tab> :e #<CR>
 
+vnoremap * y/<C-r>"<CR>
+
 "autoclose and position cursor to write text inside
 inoremap ' ''<left>
 inoremap ` ``<left>

@@ -1,4 +1,6 @@
 call plug#begin()
+	Plug 'junegunn/fzf'
+	Plug 'tpope/vim-repeat'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-vinegar'
 	Plug 'mattn/emmet-vim'
