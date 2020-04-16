@@ -16,8 +16,11 @@ super + u
 super + x; {m,X,n}
 	$TERMINAL --class FLOATERM -e {ncmpcpp,nnn,nmtui}
 
-super + x; {f,e,x,E}
-	{firefox,subl3,thunar, $TERMINAL -e nvim}
+super + x; {f,e,x,E, p}
+	{firefox,subl3,thunar, $TERMINAL -e nvim, mpv --player-operation-mode='pseudo-gui'}
+
+super + x; P
+	~/.cfg/bin/mpv-lastopen
 
 super + Print
 	cd ~/media/pictures && scrot
