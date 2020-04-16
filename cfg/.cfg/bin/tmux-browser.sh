@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PDIR=$(cat ~/projects | column -t | rofi -dmenu -p "projects" | awk -F' +' '{print $2}')
+PDIR=$(cat ~/docs/projects | column -t | rofi -dmenu -p "projects" | awk -F' +' '{print $2}')
 
 if [ -n "$PDIR" ]; then
 	cd $HOME
