@@ -4,7 +4,7 @@
 background = ${xrdb:color0}
 background-alt = ${xrdb:color8}
 
-foreground = ${xrdb:color0}
+foreground = ${xrdb:color7}
 foreground-alt = ${xrdb:color15}
 alert = ${xrdb:color1}
 transparent = rgba(0, 0, 0, 0)

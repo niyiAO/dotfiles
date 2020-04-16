@@ -67,7 +67,7 @@ padding-right = 1
 
 module-margin = 0
 
-font-0 = ShareTechMono:size=10;3
+font-0 = Iosevka:style=Regular:size=10;3
 font-1 = icomoon:pixelsize=10;3
 
 modules-left = i3 bspwm mpd
@@ -107,6 +107,7 @@ format = <label-state> <label-mode>
 format-padding = 1
 
 format-background = ${colors.color4} 
+format-focused-underline = ${colors.color0}
 
 label-empty = 
 
@@ -140,7 +141,7 @@ label-visible-font = 2
 label-urgent-font = 2
 format-background = ${colors.color4} 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+; pin-workspaces = true
 
 label-mode-padding = 1
 label-mode-background = ${colors.alert}
@@ -165,7 +166,6 @@ label-urgent-padding-right = 1
 ; Separator in between workspaces
 label-separator-font = 2
 ; label-separator = "'"
-
 
 [module/mpd]
 type = internal/mpd
