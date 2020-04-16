@@ -1,5 +1,28 @@
 #!/usr/bin/env ruby
 
+def setTimeout(delay, *args)
+  thread = Thread.new {
+    sleep delay
+    yield(*args)
+  }
+
+  return thread
+end
+
+def clearTimeout(timer)
+  timer.terminate
+end
+
+def debounce(delay, &block) 
+  lock = nil
+
+  return lambda { |*args|
+    clearTimeout(lock) if lock != nil
+    lock = setTimeout(delay, *args, &block)
+  }
+
+end
+
 def desktops
   %x(bspc query -D -n .leaf)
     .split("\n")
@@ -19,7 +42,7 @@ def setup_window_scaling(node_range, gap_range)
   gradient = (yb - ya)/(xb - xa)
   intercept = ya - gradient/xa
 
-  lambda { | desktop, count |
+  debounce(0.01) { | desktop, count |
     return unless (xa..xb) === count
     wgap = (gradient * count.to_f + intercept).round
     %x(bspc config -d #{desktop} window_gap #{wgap})
