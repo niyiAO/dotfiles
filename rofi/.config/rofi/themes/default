@@ -1,8 +1,10 @@
 
+@import "colors.rasi"
+
 * {
 	font: "FantasqueSansMono 12";
-	foreground: #bebdbb;
-	background: rgba(12, 12, 17, 0.5);
+	foreground: @fg;
+	background: @bg;
 	transparent: rgba(0, 0, 0, 0);
 
 	normal-background: @transparent;
@@ -13,7 +15,7 @@
 	active-foreground: @foreground;
 
 	selected-normal-background: @transparent;
-	selected-normal-foreground: #AC3B42;
+	selected-normal-foreground: @color1;
 	selected-urgent-background: @foreground;
 	selected-urgent-foreground: @background;
 	selected-active-background: @foreground;
@@ -145,3 +147,4 @@
 	str: ":";
 	text-color: @normal-foreground;
 }
+
