@@ -1,26 +1,59 @@
 #!/bin/bash
 
-export PATH="$HOME/.dotnet/tools:$HOME/.cache/npm-packages/bin:$HOME/.cfg/bin:$HOME/.cfg/pkgs/bin:$HOME/.cfg/pkgs/usr/local/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
+export PATH="\
+$HOME/.android/Sdk/tools/bin:\
+$HOME/.dotnet/tools:\
+$HOME/.cache/npm-packages/bin:\
+$HOME/.cfg/bin:\
+$HOME/.cfg/pkgs/bin:\
+$HOME/.cfg/pkgs/usr/local/bin:\
+$HOME/.gem/ruby/2.7.0/bin:\
+/opt/jruby/bin:\
+$PATH"
+
 export EDITOR="nvim"
 export TERMINAL="termite"
 
 export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
 export GOPATH=$HOME/docs/go
-
+export ANDROID_HOME=$HOME/.android/Sdk
 source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
+alias rm=" rm -I"
 alias i="grep -i"
 alias ff="find -type f -iname"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
 alias vd="vidir"
-alias nn="nnn"
 alias vim="nvim"
 alias subl="subl3"
 alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
+alias nn=nnn
+
+function wk () {
+	cd "$wksp/$1"
+}
+
+function nnn ()
+{
+	if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+		echo "nnn is already running"
+		return
+	fi
+
+	export NNN_PLUG='e:-_nvim $nnn*;p:-_less -iR $nnn*'
+	NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+	/usr/bin/nnn "$@"
+
+	if [ -f "$NNN_TMPFILE" ]; then
+		. "$NNN_TMPFILE"
+		rm -f "$NNN_TMPFILE" > /dev/null
+	fi
+}
 
 function pan () {
 	man -t "$@" | ps2pdf - | zathura - --fork
@@ -37,4 +70,3 @@ function termfix () {
 function mk() {
 	mkdir -p "$@" && cd "$@"
 }
-
