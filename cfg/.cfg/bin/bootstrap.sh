@@ -4,9 +4,8 @@ function runIfNot() {
 	pidof $1 > /dev/null || $@ &
 }
 
-
-feh --bg-fill ~/.cfg/images/wallpaper
-wal -R
+~/.fehbg &
+wal -Rn
 
 killall sxhkd
 sxhkd $1 &
