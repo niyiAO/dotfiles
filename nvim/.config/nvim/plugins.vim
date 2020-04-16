@@ -9,5 +9,6 @@ call plug#begin()
 	Plug 'digitaltoad/vim-jade'
 	Plug 'tpope/vim-haml'
 	Plug 'othree/javascript-libraries-syntax.vim'
+	Plug 'mhinz/vim-startify'
 call plug#end()
 
