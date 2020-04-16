@@ -30,3 +30,4 @@ source $HOME/.cfg/env
 # export ARCHFLAGS="-arch x86_64"
 autoload zmv
 eval "$(direnv hook zsh)"
+compinit
