@@ -21,7 +21,7 @@ export ANDROID_HOME=$HOME/.android/Sdk
 source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
-alias rm=" rm -I"
+alias rm="trash"
 alias i="grep -i"
 alias ff="find -type f -iname"
 alias la="ls -A"
@@ -32,6 +32,7 @@ alias subl="subl3"
 alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
 alias nn=nnn
+alias mmv='noglob zmv'
 
 function wk () {
 	cd "$wksp/$1"
