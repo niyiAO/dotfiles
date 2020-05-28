@@ -16,8 +16,11 @@ super + u
 super + x; {m,X,n}
 	$TERMINAL --class FLOATERM -e {ncmpcpp,nnn,nmtui}
 
-super + x; {f,e,x,E, p}
-	{firefox,subl3,thunar, $TERMINAL -e nvim, mpv --player-operation-mode='pseudo-gui'}
+super + x; {f,F,e,x,E, p}
+	{firefox, firefox --private-window,subl3,thunar, $TERMINAL -e nvim, mpv --player-operation-mode='pseudo-gui'}
+
+super + x; v
+	pavucontrol
 
 super + x; P
 	~/.cfg/bin/mpv-lastopen
@@ -38,7 +41,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pulseaudio-ctl {up,down,mute} && bash ~/.config/dunst/notify_volume.sh
 
 XF86MonBrightness{Up,Down}
-	xbacklight -{inc,dec} 10
+	xbacklight | cut -f1 -d. | xargs -i echo 1.01 \^ \(\{\} - 100\) '*' 10 | bc -l | xargs xbacklight -{inc,dec}
 
 XF86Display
 	bash ~/.cfg/bin/mul-monitors
