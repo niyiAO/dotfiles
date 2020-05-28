@@ -1,0 +1,6 @@
+#!/bin/bash
+
+(
+	cd ~/.cfg/pkgs/SMLoadr
+	node ./SMLoadr.js -p "$HOME/temp/music" -u "$1"
+)
