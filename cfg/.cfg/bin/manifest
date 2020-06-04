@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'fileutils'
+require 'pathname'
+
+
+def unwrap dirs, context
+  dirs.flat_map do |dir, tree|
+    push tree, "#{context}/#{dir}"
+  end
+end
+
+def push(tree, context=".")
+  tree.flat_map do |item|
+    case item
+    when String
+      "#{context}/#{item}"
+    when Hash
+      unwrap item, context
+    end
+  end
+end
+
+if File.exists? '.manifest.yml'
+  tree = YAML.load_file '.manifest.yml'
+
+  files = push tree
+  files.each do |y|
+    dir = File.dirname(y)
+
+    unless File.directory? dir
+      FileUtils.mkdir_p dir
+    end
+
+    FileUtils.touch y
+  end
+else
+	puts "No manifest file found."
+end
+

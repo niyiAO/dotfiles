@@ -23,7 +23,7 @@ source /usr/share/autojump/autojump.zsh
 alias S="sudo"
 alias rm="trash"
 alias i="grep -i"
-alias ff="find -type f -iname"
+alias ff="noglob find -type f -iname"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
 alias vd="vidir"
