@@ -26,6 +26,9 @@ super + x; P
 super + Print
 	cd ~/media/pictures && scrot
 
+Print
+	mpc toggle
+
 super + slash
 	~/.cfg/bin/toggle_app polybar polybar main
 
