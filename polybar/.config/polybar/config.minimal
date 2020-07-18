@@ -25,7 +25,7 @@ foreground = ${colors.foreground}
 spacing = 0
 line-size = 5
 
-border-size = 2
+border-size = 4
 border-color = ${self.background}
 
 module-margin = 0
@@ -230,6 +230,6 @@ screenchange-reload = true
 
 [global/wm]
 margin-top = 0
-margin-bottom = -2
+margin-bottom = -4
 
 ; vim:ft=dosini
