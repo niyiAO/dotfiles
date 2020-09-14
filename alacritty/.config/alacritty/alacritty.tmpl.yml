@@ -2,6 +2,7 @@
 env: 
   TERM: xterm-256color
 window:
+  dynamic_title: true
   dimensions:
     lines: 20
     columns: 70
@@ -93,7 +94,6 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{{}}<>\t"
   save_to_clipboard: false
 
-dynamic_title: true
 
 mouse:
   url:
