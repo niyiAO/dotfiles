@@ -23,7 +23,7 @@ source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
 alias rm="trash"
-alias i="grep -i"
+alias i="grep -Ei"
 alias ff="noglob find -type f -iname"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
@@ -32,7 +32,8 @@ alias vim="nvim"
 alias subl="subl3"
 alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
-alias nn=nnn
+alias n=nnn
+alias nn='nnn -p -'
 alias mmv='noglob zmv'
 
 function wk () {
