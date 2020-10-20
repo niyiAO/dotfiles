@@ -14,7 +14,7 @@ $PATH"
 
 export EDITOR="nvim"
 export TERMINAL="termite"
-
+export MANPAGER="sh -c 'col -bx | bat -pl man'"
 export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
 export GOPATH=$HOME/docs/go
@@ -35,6 +35,7 @@ alias tat='tmux new -As "$PWD"'
 alias n=nnn
 alias nn='nnn -p -'
 alias mmv='noglob zmv'
+alias cat='bat -p'
 
 function wk () {
 	cd "$wksp/$1"
