@@ -15,7 +15,7 @@ ZSH_THEME="ys-custom"
 
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn fzf)
 source $ZSH/oh-my-zsh.sh
 
 bindkey -s '^z' '^Qfg^M'
