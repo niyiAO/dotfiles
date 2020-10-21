@@ -19,6 +19,14 @@ export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
 export GOPATH=$HOME/docs/go
 export ANDROID_HOME=$HOME/.android/Sdk
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_CTRL_R_OPTS='--sort --exact'
+export FZF_DEFAULT_OPTS='
+    --reverse
+    --height 40%
+    --color fg:7,bg:-1,hl:1,fg+:232,bg+:1,hl+:255
+    --color info:7,prompt:2,spinner:1,pointer:232,marker:1,gutter:-1
+'
 source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
@@ -33,30 +41,11 @@ alias subl="subl3"
 alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
 alias n=nnn
-alias nn='nnn -p -'
 alias mmv='noglob zmv'
 alias cat='bat -p'
 
 function wk () {
 	cd "$wksp/$1"
-}
-
-function nnn ()
-{
-	if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-		echo "nnn is already running"
-		return
-	fi
-
-	export NNN_PLUG='e:-_nvim $nnn*;p:-_less -iR $nnn*'
-	NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-	/usr/bin/nnn "$@"
-
-	if [ -f "$NNN_TMPFILE" ]; then
-		. "$NNN_TMPFILE"
-		rm -f "$NNN_TMPFILE" > /dev/null
-	fi
 }
 
 function pan () {
