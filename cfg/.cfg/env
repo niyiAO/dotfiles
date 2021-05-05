@@ -1,8 +1,13 @@
 #!/bin/bash
 
+export ANDROID_HOME=$HOME/.android/Sdk
+
 export PATH="\
 $HOME/.cargo/bin:\
-$HOME/.android/Sdk/tools/bin:\
+$ANDROID_HOME/emulator:\
+$ANDROID_HOME/tools:\
+$ANDROID_HOME/tools/bin:\
+$ANDROID_HOME/platform-tools:\
 $HOME/.dotnet/tools:\
 $HOME/.cache/npm-packages/bin:\
 $HOME/.cfg/bin:\
@@ -13,12 +18,12 @@ $HOME/.gem/ruby/2.7.0/bin:\
 $PATH"
 
 export EDITOR="nvim"
-export TERMINAL="termite"
+export CHROME_EXECUTABLE="/bin/chromium"
+export TERMINAL="alacritty"
 export MANPAGER="sh -c 'col -bx | bat -pl man'"
 export NOTE_DIR=$HOME/notes
 export wksp=$HOME/docs/workspace
 export GOPATH=$HOME/docs/go
-export ANDROID_HOME=$HOME/.android/Sdk
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_R_OPTS='--sort --exact'
 export FZF_DEFAULT_OPTS='
@@ -27,12 +32,11 @@ export FZF_DEFAULT_OPTS='
     --color fg:7,bg:-1,hl:1,fg+:232,bg+:1,hl+:255
     --color info:7,prompt:2,spinner:1,pointer:232,marker:1,gutter:-1
 '
-source /usr/share/autojump/autojump.zsh
 
 alias S="sudo"
 alias rm="trash"
 alias i="grep -Ei"
-alias ff="noglob find -type f -iname"
+alias ff="noglob ag -g"
 alias la="ls -A"
 alias X="xclip -sel clip -o | xargs"
 alias vd="vidir"
@@ -40,9 +44,13 @@ alias vim="nvim"
 alias subl="subl3"
 alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
+alias tas='tmux new -ds "$PWD"'
 alias n=nnn
 alias mmv='noglob zmv'
 alias cat='bat -p'
+alias git='hub'
+alias lighthouse="lighthouse --chrome-flags='--headless' --throttling.cpuSlowdownMultiplier=2.0"
+alias mega-fetch="mega-ls | fzf -m | parallel mega-get -q"
 
 function wk () {
 	cd "$wksp/$1"
