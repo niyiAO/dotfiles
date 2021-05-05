@@ -15,7 +15,7 @@ super + x; {m,X,n}
 	$TERMINAL --class FLOATERM -e {ncmpcpp,nnn -S,nmtui}
 
 super + x; {f,F,e,x,E, p}
-	{firefox, firefox --private-window,subl3,thunar, $TERMINAL -e nvim, mpv --player-operation-mode='pseudo-gui'}
+	{firefox, firefox --private-window,code,thunar, $TERMINAL -e nvim, mpv --player-operation-mode='pseudo-gui'}
 
 super + x; v
 	pavucontrol
@@ -38,8 +38,11 @@ super + shift + slash
 super + l
 	dm-tool lock
 
-super + { ,shift + } Return
-	$TERMINAL { ,--title scratchpad --class FLOATERM -e tmux new -As scratch}
+super + Return
+	$TERMINAL 
+
+super + shift + Return
+	tmux ls || tmux new -ds scratch && $TERMINAL --class FLOATERM -e tmux a
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pulseaudio-ctl {up,down,mute} && bash ~/.config/dunst/notify_volume.sh
