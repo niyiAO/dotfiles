@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PDIR=$(cat ~/docs/projects | column -t | rofi -dmenu -p "projects" | awk -F' +' '{print $2}')
+WKSP="$HOME/docs/workspace"
+PDIR=$(ls $WKSP | rofi -dmenu -p workspace)
 
 if [ -n "$PDIR" ]; then
-	cd $HOME
-	FDIR=$(readlink -f $PDIR)
-	cd $PDIR
-	$TERMINAL --class FLOATERM -e tmux new -As $FDIR
+	cd "$WKSP/$PDIR"
+	$TERMINAL --class FLOATERM -e tmux new -As $PWD &
 fi
+
