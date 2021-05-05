@@ -2,7 +2,7 @@ let mapleader = " "
 map <Space> <Leader> 
 
 nnoremap + ddp
-nnoremap - :.move-2<CR>
+nnoremap - ddkP
 nnoremap <C-n> :set relativenumber!<CR>
 nnoremap ; :
 nnoremap <Leader>- :split<CR>
@@ -11,14 +11,27 @@ nnoremap <Leader>q :close<CR>
 nnoremap <Leader><Leader>w :x<CR>
 nnoremap <Leader><Leader>q :q!<CR>
 nnoremap <Leader>w :w<CR>
-nnoremap <C-\> <Esc>:NERDTreeToggle<CR>
-nnoremap <C-l> :noh<CR>
+nnoremap <C-\> <Esc>:Vex<CR>
+nnoremap <Leader>l :noh<CR>
+
+nnoremap <silent> <C-[> :bprev<CR>
+nnoremap <silent> <C-]> :bnext<CR>
+
+nnoremap <Leader><Right> <C-w><Right><CR>
+nnoremap <Leader><Left> <C-w><Left><CR>
+nnoremap <Leader><Up> <C-w><Up><CR>
+nnoremap <Leader><Down> <C-w><Down><CR>
+nnoremap <C-h> b
+nnoremap <C-l> w
+nnoremap <C-k> {
+nnoremap <C-j> }
 
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader><Leader>p "*p
 nnoremap <Leader><Leader><Leader> <nop>
-nnoremap <Leader><Tab> :e #<CR>
+nnoremap <Leader><Tab> <C-^>
+nnoremap <C-p> :Files<CR>
 
 vnoremap * y/<C-r>"<CR>
 

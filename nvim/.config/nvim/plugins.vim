@@ -11,5 +11,6 @@ call plug#begin()
 	Plug 'digitaltoad/vim-jade'
 	Plug 'othree/javascript-libraries-syntax.vim'
 	Plug 'mhinz/vim-startify'
+	Plug 'mustache/vim-mustache-handlebars'
 call plug#end()
 

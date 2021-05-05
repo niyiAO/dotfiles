@@ -16,6 +16,6 @@ set undofile
 let g:user_emmet_install_global = 0
 let g:netrw_winsize = 25
 let g:netrw_browse_split = 4
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,vue,html.handlebars EmmetInstall
 
 filetype plugin on
