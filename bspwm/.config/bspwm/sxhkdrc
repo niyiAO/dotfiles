@@ -52,11 +52,14 @@ super + {p,b,comma,period}
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.occupied.local
+
+super + n
+	bspc desktop -f next.!occupied
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+super + Tab
+	bspc node -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}

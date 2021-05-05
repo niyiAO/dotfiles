@@ -1,0 +1,21 @@
+#!/bin/bash
+
+killall polybar
+bspc config top_padding 0
+bspc config window_gap 0
+kill $(pidof dygap)
+
+
+function runIfNot() {
+	pidof $1 > /dev/null || $@ &
+}
+
+function log() {
+	runIfNot polybar main
+	~/.config/bspwm/dygap 1 6 35 -2 &
+	bspc config window_gap 20
+}
+
+trap log 0
+
+sleep infinity

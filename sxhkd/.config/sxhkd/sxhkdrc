@@ -32,6 +32,9 @@ Print
 super + slash
 	~/.cfg/bin/toggle_app polybar polybar main
 
+super + shift + slash
+	~/.cfg/bin/toggle_app bspwmzen ~/.cfg/bin/bspwmzen
+
 super + l
 	dm-tool lock
 
