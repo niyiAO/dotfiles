@@ -96,5 +96,5 @@ selection:
 
 
 mouse:
-  url:
+  hints:
     modifiers: Control
