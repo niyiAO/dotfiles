@@ -37,7 +37,7 @@ modules-left = xwindow
 modules-center = i3 bspwm
 modules-right =  wlan temperature xbacklight pulseaudio battery date
 
-; tray-position = right
+tray-position = right
 tray-padding = 2
 
 wm-restack = bspwm
