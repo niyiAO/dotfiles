@@ -3,6 +3,7 @@
 	name = Adeniyi Adeosun
 [alias]
 	graph = log --graph --oneline --decorate=short
+	squash = commit -a --amend -C HEAD
 [init]
 	defaultBranch = main
 [pull]
