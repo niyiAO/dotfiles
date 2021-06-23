@@ -38,7 +38,6 @@ alias rm="trash"
 alias i="grep -Ei"
 alias ff="noglob ag -g"
 alias la="ls -A"
-alias X="xclip -sel clip -o | xargs"
 alias vd="vidir"
 alias vim="nvim"
 alias subl="subl3"
@@ -54,6 +53,14 @@ alias mega-fetch="mega-ls | fzf -m | parallel mega-get -q"
 
 function wk () {
 	cd "$wksp/$1"
+}
+
+function X () {
+	if (echo $@ | grep -q {}) ; then
+		xclip -sel clip -o | xargs -i $@
+	else
+		xclip -sel clip -o | xargs $@
+	fi
 }
 
 function pan () {
