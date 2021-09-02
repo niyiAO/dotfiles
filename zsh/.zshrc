@@ -31,3 +31,6 @@ source $HOME/.cfg/env
 autoload zmv
 eval "$(direnv hook zsh)"
 compinit
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
