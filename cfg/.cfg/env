@@ -1,20 +1,10 @@
 #!/bin/bash
 
-export ANDROID_HOME=$HOME/.android/Sdk
-
 export PATH="\
-$HOME/.cargo/bin:\
-$ANDROID_HOME/emulator:\
-$ANDROID_HOME/tools:\
-$ANDROID_HOME/tools/bin:\
-$ANDROID_HOME/platform-tools:\
-$HOME/.dotnet/tools:\
 $HOME/.cache/npm-packages/bin:\
 $HOME/.cfg/bin:\
 $HOME/.cfg/pkgs/bin:\
 $HOME/.cfg/pkgs/usr/local/bin:\
-$HOME/.gem/ruby/2.7.0/bin:\
-/opt/jruby/bin:\
 $PATH"
 
 export EDITOR="nvim"
