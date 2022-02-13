@@ -7,13 +7,14 @@ $HOME/.cfg/pkgs/bin:\
 $HOME/.cfg/pkgs/usr/local/bin:\
 $PATH"
 
+if [ -f "$HOME/.cfg/env.local" ]; then
+	source "$HOME/.cfg/env.local"
+fi
+
 export EDITOR="nvim"
 export CHROME_EXECUTABLE="/bin/chromium"
 export TERMINAL="alacritty"
 export MANPAGER="sh -c 'col -bx | bat -pl man'"
-export NOTE_DIR=$HOME/notes
-export wksp=$HOME/docs/workspace
-export GOPATH=$HOME/docs/go
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_R_OPTS='--sort --exact'
 export FZF_DEFAULT_OPTS='
@@ -71,10 +72,7 @@ function bak () {
 	cp -r "$@" "$@.bak" 
 }
 
-function termfix () {
-	infocmp | ssh $@ tic -x -
-}
-
 function mk() {
 	mkdir -p "$@" && cd "$@"
 }
+
