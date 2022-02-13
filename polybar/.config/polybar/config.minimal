@@ -7,7 +7,7 @@ background-alt = ${xrdb:color8}
 foreground = ${xrdb:color7}
 foreground-alt = ${xrdb:color15}
 alert = ${xrdb:color1}
-transparent = rgba(0, 0, 0, 0)
+transparent = #00000000
 
 [bar/main]
 monitor = eDP1
@@ -68,7 +68,7 @@ type = internal/bspwm
 format = <label-state> <label-mode>
 format-padding = 1
 
-label-empty = 
+label-empty =
 
 label-focused = [%index%]
 label-focused-padding = 0
