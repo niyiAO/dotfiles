@@ -1,0 +1,54 @@
+@import "colors.rasi" * {
+  font: "FantasqueSansMonoNerdFont 32";
+  foreground: @fg;
+  background: @bg;
+  transparent: rgba(0, 0, 0, 0);
+
+  normal-background: @transparent;
+  normal-foreground: @foreground;
+  urgent-background: @transparent;
+  urgent-foreground: @foreground;
+  active-background: @transparent;
+  active-foreground: @foreground;
+
+  background-color: @transparent;
+  text-color: @fg;
+}
+
+window {
+  background-color: @background;
+  fullscreen: true;
+}
+
+mainbox {
+  children: [listview];
+  margin: calc((100% - 200px) / 2) calc((100% - (160px * 4 + 3 * 40px)) / 2);
+}
+
+overlay {
+  background-color: #000000;
+}
+
+listview {
+  layout: horizontal;
+  spacing: 40px;
+  lines: 4;
+  text-color: inherit;
+}
+
+element {
+  background-color: @normal-background;
+  text-color: inherit;
+  orientation: vertical;
+  padding: 40px 60px 40px 50px;
+}
+
+element.selected {
+  background-color: hsla(100deg, 0%, 100%, 10%);
+  border-radius: 5px;
+  text-color: @selected-normal-foreground;
+
+  background-color: hsla(240deg, 20%, 20%, 50%);
+  border: 1px;
+  border-color: hsla(240deg, 20%, 20%, 80%);
+}

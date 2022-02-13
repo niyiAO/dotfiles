@@ -1,0 +1,7 @@
+configuration {
+	modi: "";
+	icon-theme: "Papirus";
+	dpi: 144;
+}
+
+@theme "default"

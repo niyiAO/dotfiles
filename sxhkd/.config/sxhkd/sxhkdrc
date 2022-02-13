@@ -3,7 +3,7 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 super + d
-	rofi -show drun -show-icons
+	rofi -show drun -show-icons -theme sidebar
 
 super + shift + d
 	bash ~/.cfg/bin/tmux-browser.sh
@@ -28,6 +28,12 @@ super + Print
 
 Print
 	mpc toggle
+
+~ctrl + space
+	dunstctl close
+
+~ctrl + shift + space
+	dunstctl close-all
 
 super + slash
 	~/.cfg/bin/toggle_app polybar polybar main
@@ -54,5 +60,5 @@ XF86Display
 	bash ~/.cfg/bin/mul-monitors
 
 XF86PowerOff
-	rofi -modi 'powermenu:~/.cfg/bin/powermenu.sh' -show powermenu
+	rofi -modi 'powermenu:~/.config/rofi/scripts/powermenu.sh' -show powermenu -theme powermenu
 
