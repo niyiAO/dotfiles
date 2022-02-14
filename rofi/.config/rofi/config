@@ -1,7 +1,0 @@
-! Rofi
-
-rofi.dpi: 144
-rofi.theme: ~/.config/rofi/themes/default
-rofi.modi: drun
-rofi.icon-theme: Papirus-Dark
-

@@ -3,7 +3,7 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 super + d
-	rofi -show drun -show-icons
+	rofi -show drun -show-icons -theme sidebar
 
 super + shift + d
 	bash ~/.cfg/bin/tmux-browser.sh
@@ -29,6 +29,12 @@ super + Print
 Print
 	mpc toggle
 
+~ctrl + space
+	dunstctl close
+
+~ctrl + shift + space
+	dunstctl close-all
+
 super + slash
 	~/.cfg/bin/toggle_app polybar polybar main
 
@@ -45,14 +51,14 @@ super + shift + Return
 	tmux ls || tmux new -ds scratch && $TERMINAL --class FLOATERM -e tmux a
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pulseaudio-ctl {up,down,mute} && bash ~/.config/dunst/notify_volume.sh
+	bash ~/.cfg/bin/volume_control.sh {up,down,mute}
 
 XF86MonBrightness{Up,Down}
-	xbacklight | cut -f1 -d. | xargs -i echo 1.01 \^ \(\{\} - 100\) '*' 10 | bc -l | xargs xbacklight -{inc,dec}
+	bash ~/.cfg/bin/brightness_control.sh {inc,dec}
 
 XF86Display
 	bash ~/.cfg/bin/mul-monitors
 
 XF86PowerOff
-	rofi -modi 'powermenu:~/.cfg/bin/powermenu.sh' -show powermenu
+	rofi -modi 'powermenu:~/.config/rofi/scripts/powermenu.sh' -show powermenu -theme powermenu
 

@@ -1,8 +1,8 @@
-
-env: 
+env:
   TERM: xterm-256color
 window:
   dynamic_title: true
+  opacity: 0.9
   dimensions:
     lines: 20
     columns: 70
@@ -14,15 +14,15 @@ window:
   #startup_mode: Windowed
   #title: Alacritty
   #class:
-    #instance: Alacritty
-    #general: Alacritty
+  #instance: Alacritty
+  #general: Alacritty
 
   #gtk_theme_variant: None
 
 #scrolling:
-  #history: 10000
-  #multiplier: 3
-  #auto_scroll: false
+#history: 10000
+#multiplier: 3
+#auto_scroll: false
 
 #tabspaces: 8
 
@@ -69,31 +69,28 @@ colors:
   #  background: '0x404040'
 
   normal:
-    black:   '0x{color0.strip}'
-    red:     '0x{color1.strip}'
-    green:   '0x{color2.strip}'
-    yellow:  '0x{color3.strip}'
-    blue:    '0x{color4.strip}'
+    black: '0x{color0.strip}'
+    red: '0x{color1.strip}'
+    green: '0x{color2.strip}'
+    yellow: '0x{color3.strip}'
+    blue: '0x{color4.strip}'
     magenta: '0x{color5.strip}'
-    cyan:    '0x{color6.strip}'
-    white:   '0x{color7.strip}'
+    cyan: '0x{color6.strip}'
+    white: '0x{color7.strip}'
 
   bright:
-    black:   '0x{color8.strip}'
-    red:     '0x{color9.strip}'
-    green:   '0x{color10.strip}'
-    yellow:  '0x{color11.strip}'
-    blue:    '0x{color12.strip}'
+    black: '0x{color8.strip}'
+    red: '0x{color9.strip}'
+    green: '0x{color10.strip}'
+    yellow: '0x{color11.strip}'
+    blue: '0x{color12.strip}'
     magenta: '0x{color13.strip}'
-    cyan:    '0x{color14.strip}'
-    white:   '0x{color15.strip}'
-
-background_opacity: 0.9
+    cyan: '0x{color14.strip}'
+    white: '0x{color15.strip}'
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{{}}<>\t"
   save_to_clipboard: false
-
 
 mouse:
   hints:

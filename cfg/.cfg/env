@@ -1,5 +1,12 @@
 #!/bin/bash
 
+export PATH="\
+$HOME/.cache/npm-packages/bin:\
+$HOME/.cfg/bin:\
+$HOME/.cfg/pkgs/bin:\
+$HOME/.cfg/pkgs/usr/local/bin:\
+$PATH"
+
 if [ -f "$HOME/.cfg/env.local" ]; then
 	source "$HOME/.cfg/env.local"
 fi
@@ -33,10 +40,28 @@ alias mmv='noglob zmv'
 alias cat='bat -p'
 alias git='hub'
 alias lighthouse="lighthouse --chrome-flags='--headless' --throttling.cpuSlowdownMultiplier=2.0"
-alias mega-fetch="mega-ls | fzf -m | parallel mega-get -q"
+alias mega-fetch="mega-ls | fzf -m | xargs -n 1 mega-get -q"
+alias xstream="X webtorrent --mpv"
+alias http="xh"
 
 function wk () {
 	cd "$wksp/$1"
+}
+
+function tstream() {
+	webtorrent --mpv -o ~/temp "$1"
+}
+
+function hold () {
+	systemd-inhibit --what="$1" ${@:2}
+}
+
+function X () {
+	if (echo $@ | grep -q {}) ; then
+		xclip -sel clip -o | xargs -i $@
+	else
+		xclip -sel clip -o | xargs $@
+	fi
 }
 
 function pan () {
