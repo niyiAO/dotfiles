@@ -1,10 +1,18 @@
 [user]
-	email = meisniyi@gmail.com
-	name = Adeniyi Adeosun
+	email = deniyi.adeosun@gmail.com
+	name = Niyi Adeosun
 [alias]
 	graph = log --graph --oneline --decorate=short
 	squash = commit -a --amend -C HEAD
+	master-rebase = !git fetch && git rebase origin/main
+	publish = push --force-with-lease
+	pub = publish
+	fix = commit --fixup
 [init]
 	defaultBranch = main
 [pull]
 	rebase = false
+[push]
+	default = current
+[rebase]
+	autosquash = true
