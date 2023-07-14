@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function issueToBranch() {
+  echo $1 | sed -r -e 's/\[.*\]//' -e 's/([0-9]+)[ ]+(.*)/\1\/\2/' -e 's/ +/-/g' | tr '[:upper:]' '[:lower:]'
+}
+
+function fetchIssues() {
+  gh issue list -a @me --json number,title,url -t '{{range .}}{{.number}}{{"\t"}}{{.title}}{{"\n"}}{{end}}'
+}
+
+issue=$(fetchIssues | gum choose)
+
+[ -z "$issue" ] && exit 1
+
+branch=$(gum input --value=$(issueToBranch "$issue") --width=${#issue})
+
+[ -z "$branch" ] && exit 1
+
+git switch -c $branch
