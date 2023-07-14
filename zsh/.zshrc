@@ -2,7 +2,6 @@
 # Path to oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="ys-custom"
 # CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 # DISABLE_AUTO_UPDATE="true"
@@ -15,7 +14,14 @@ ZSH_THEME="ys-custom"
 
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting yarn fzf)
+plugins=(
+	git 
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	yarn
+	fzf-tab
+)
+
 source $ZSH/oh-my-zsh.sh
 
 bindkey -s '^z' '^Qfg^M'
@@ -29,4 +35,3 @@ source $HOME/.cfg/env
 # export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 autoload zmv
-compinit > /dev/null

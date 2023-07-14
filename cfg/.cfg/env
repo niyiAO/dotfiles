@@ -1,6 +1,12 @@
 #!/bin/bash
 
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
+
 export PATH="\
+$(go env GOPATH)/bin:\
+$HOME/.volta/bin:\
+$HOME/.deta/bin:\
 $HOME/.cache/npm-packages/bin:\
 $HOME/.cfg/bin:\
 $HOME/.cfg/pkgs/bin:\
@@ -13,6 +19,7 @@ fi
 
 export EDITOR="nvim"
 export CHROME_EXECUTABLE="/bin/chromium"
+export PAGER="bat --style plain"
 export TERMINAL="alacritty"
 export MANPAGER="sh -c 'col -bx | bat -pl man'"
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
@@ -47,7 +54,7 @@ function wk () {
 }
 
 function tstream() {
-	webtorrent --mpv -o ~/temp "$1"
+	webtorrent --not-on-top --mpv -o ~/Media/webtorrent "$@"
 }
 
 function hold () {
@@ -56,9 +63,9 @@ function hold () {
 
 function X () {
 	if (echo $@ | grep -q {}) ; then
-		xclip -sel clip -o | xargs -i $@
+		$CLIPBOARD_COMMAND | xargs -i $@
 	else
-		xclip -sel clip -o | xargs $@
+		$CLIPBOARD_COMMAND | xargs $@
 	fi
 }
 
