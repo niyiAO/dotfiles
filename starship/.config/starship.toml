@@ -1,0 +1,12 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[nodejs]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[character]
+disabled = false
+error_symbol = '[✗](bold red)'
+success_symbol = '[➜](bold green)'
