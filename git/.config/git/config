@@ -16,3 +16,6 @@
 	default = current
 [rebase]
 	autosquash = true
+
+[include]
+	path = config.local
