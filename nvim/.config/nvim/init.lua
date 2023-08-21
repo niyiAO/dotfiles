@@ -1,0 +1,5 @@
+require 'helpers'
+require 'prefs'
+require 'bindings'
+require 'plugins/setup'
+require 'rice'
