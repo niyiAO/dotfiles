@@ -3,15 +3,10 @@
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-export PATH="\
-$(go env GOPATH)/bin:\
-$HOME/.volta/bin:\
-$HOME/.deta/bin:\
-$HOME/.cache/npm-packages/bin:\
-$HOME/.cfg/bin:\
-$HOME/.cfg/pkgs/bin:\
-$HOME/.cfg/pkgs/usr/local/bin:\
-$PATH"
+PATH_add \
+	"$(go env GOPATH)/bin" \
+	"$HOME/.volta/bin" \
+	"$HOME/.cfg/bin"
 
 if [ -f "$HOME/.cfg/env.local" ]; then
 	source "$HOME/.cfg/env.local"
@@ -49,7 +44,7 @@ alias xstream="X webtorrent --mpv"
 alias http="xh"
 
 function wk () {
-	cd "$wksp/$1"
+	cd "${wksp:?}/$1" || exit
 }
 
 function n () {
@@ -93,6 +88,6 @@ function bak () {
 }
 
 function mk() {
-	mkdir -p "$@" && cd "$@"
+	mkdir -p "$@" && cd "$@" || exit
 }
 

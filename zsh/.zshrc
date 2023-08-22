@@ -29,9 +29,18 @@ bindkey -s '^[l' '^Qls^M'
 bindkey '^ ' autosuggest-accept
 bindkey '^[e' edit-command-line
 
-source $HOME/.cfg/env
+function PATH_add() {
+	while [ $# -gt 0 ]; do
+		[[ ":$EXTRA_PATH:" != *":$1:"* ]] && EXTRA_PATH="${EXTRA_PATH:+"$EXTRA_PATH:"}$1"
+		shift
+	done
 
-# export MANPATH="/usr/local/man:$MANPATH"
-# export LANG=en_US.UTF-8
-# export ARCHFLAGS="-arch x86_64"
+	export EXTRA_PATH
+}
+
+source $HOME/.cfg/env
 autoload zmv
+
+[[ ":$PATH:" != *":$EXTRA_PATH:"* ]] && PATH="$EXTRA_PATH:$PATH"
+export PATH
+
