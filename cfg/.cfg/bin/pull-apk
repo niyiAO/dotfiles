@@ -1,0 +1,7 @@
+#!/bin/bash
+
+package=$(adb shell pm list packages | gum filter)
+package_path=$(adb shell pm path "${package#package:}")
+
+adb pull "${package_path#package:}" /tmp/base.apk
+apktool d /tmp/base.apk -o app

@@ -1,0 +1,65 @@
+#!/bin/bash
+
+diff=$(git diff --staged --no-ext-diff)
+
+if [ -z "$diff" ]; then
+	echo "No changes found"
+	exit 1
+fi
+
+nudge=${*:+"the author summarizes the changes as: $*"}
+
+defaultPrompt="The commit message should be in the conventional commit format.
+That is the format 'type(scope): message'.
+Where type is one of feat, fix, docs, test, chore, ci or revert.
+Scope should be the relevant package/module/component/page."
+
+prompt="Write a one line commit message title for the change in this diff.
+${COMMIT_PROMPT:-$defaultPrompt}
+And message is a simple, concise summary of the change,
+it should use present tense (never past tense), should use simple, direct language
+and be written in imperative mood. Avoid wordy, long descriptions (e.g. 'make use of' instead of just 'use')
+The current branch name is '$(git rev-parse --abbrev-ref HEAD)' if needed for context.
+$nudge.
+IF THE DIFF IS EMPTY RESPOND: 'No changes found'
+
+The current diff is:
+$diff"
+
+message=""
+
+function generateMessage() {
+	message=$(gum spin -s line --title Generating --show-output -- mods --no-cache -q -m gpt-4 -f "$prompt")
+}
+
+
+function editMessage() {
+	message=$(gum input --value "$message" --width 0 --char-limit 0)
+}
+
+generateMessage
+
+while true; do
+
+	if [ -z "$message" ]; then
+		exit 1
+	fi
+
+	action=$(gum choose commit regenerate edit copy discard --header "$message")
+
+	if [ -z "$action" ]; then
+		exit 1
+	fi
+
+	case "$action" in
+		commit)
+			git commit -m "$message"
+			break;;
+		copy)
+			echo "$message" | pbcopy
+			break;;
+		regenerate) generateMessage;;
+		edit) editMessage;;
+		*) break;;
+	esac
+done

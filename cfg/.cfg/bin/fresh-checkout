@@ -8,7 +8,7 @@ function fetchIssues() {
   gh issue list -a @me --json number,title,url -t '{{range .}}{{.number}}{{"\t"}}{{.title}}{{"\n"}}{{end}}'
 }
 
-issue=$(fetchIssues | gum choose)
+issue=$(fetchIssues | gum filter)
 
 [ -z "$issue" ] && exit 1
 
