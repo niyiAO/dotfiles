@@ -12,6 +12,7 @@ vim.opt.listchars = {
 }
 
 vim.cmd([[
+highlight Normal guibg=none ctermbg=none
 highlight EndOfBuffer cterm=none ctermfg=0
 highlight StatusLine cterm=bold,reverse ctermfg=9 ctermbg=0 
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
