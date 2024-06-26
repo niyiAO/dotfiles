@@ -16,6 +16,8 @@ alias mega-fetch="mega-ls | gum choose | parallel mega-get -q"
 alias xstream="X webtorrent --mpv"
 alias http="xh"
 
+export CLICOLOR=1
+
 function X () {
 	if (echo $@ | grep -q {}) ; then
 		$CLIPBOARD_COMMAND | xargs -i $@

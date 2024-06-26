@@ -1,0 +1,12 @@
+
+mattmc3/zephyr path:plugins/completion
+
+Aloxaf/fzf-tab
+
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/yarn/yarn.plugin.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+
+zdharma-continuum/fast-syntax-highlighting kind:defer
+joshskidmore/zsh-fzf-history-search kind:defer
+zsh-users/zsh-autosuggestions
