@@ -44,7 +44,8 @@ function tstream() {
 
 function pushpath() {
 	while [ $# -gt 0 ]; do
-		[[ ":$PATH:" != *":$1:"* ]] && PATH="$1:$PATH"
+		PATH=$(echo -n "$PATH" | awk -v dir="$1" 'BEGIN{printf "%s:",dir;RS=":";ORS=":"} $0 != dir')
+		PATH="${PATH%:*}"
 		shift
 	done
 
