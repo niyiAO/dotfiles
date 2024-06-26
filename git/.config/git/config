@@ -3,19 +3,34 @@
 	name = Niyi Adeosun
 [alias]
 	graph = log --graph --oneline --decorate=short
+	list = diff --name-only
 	squash = commit -a --amend -C HEAD
 	master-rebase = !git fetch && git rebase origin/main
 	publish = push --force-with-lease
 	pub = publish
 	fix = commit --fixup
+	continue = !git rebase --continue || git merge --continue || git cherry-pick --continue
 [init]
 	defaultBranch = main
+
+[diff]
+	external = difft
+
 [pull]
 	rebase = false
+	ff = only
 [push]
 	default = current
+	autoSetupRemote = true
 [rebase]
 	autosquash = true
 
 [include]
 	path = config.local
+
+[url "git@github.com:"] 
+    insteadOf = https://github.com/
+
+[branch]
+	sort = committerdate
+
