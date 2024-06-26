@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$INSTALL" = 1 ] ; then
+  brew install zoxide
+fi
+
+if ! which zoxide &> /dev/null; then
+  return
+fi
+
+eval "$(zoxide init --cmd cd zsh)"

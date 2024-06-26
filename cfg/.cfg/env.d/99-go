@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! which go &> /dev/null; then
+  return
+fi
+
+pushpath "$(go env GOPATH)/bin"

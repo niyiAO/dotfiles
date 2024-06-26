@@ -1,0 +1,50 @@
+#!/bin/bash
+
+alias S="sudo"
+alias rm="trash"
+alias i="grep -Ei"
+alias ff="noglob ag -g"
+alias la="ls -A"
+alias vd="vidir"
+alias clip="xclip -sel clip"
+alias tat='tmux new -As "$PWD"'
+alias tas='tmux new -ds "$PWD"'
+alias mmv='noglob zmv'
+alias cat='bat -p'
+alias lighthouse="lighthouse --chrome-flags='--headless' --throttling.cpuSlowdownMultiplier=2.0"
+alias mega-fetch="mega-ls | gum choose | parallel mega-get -q"
+alias xstream="X webtorrent --mpv"
+alias http="xh"
+
+function X () {
+	if (echo $@ | grep -q {}) ; then
+		$CLIPBOARD_COMMAND | xargs -i $@
+	else
+		$CLIPBOARD_COMMAND | xargs $@
+	fi
+}
+
+function bak () {
+	cp -r "$@" "$@.bak" 
+}
+
+function mk() {
+	mkdir -p "$@" && cd "$@" || return
+}
+
+function watch-branch() {
+	echo .git/HEAD | entr -rc "$@"
+}
+
+function tstream() {
+	webtorrent --not-on-top --mpv -o ~/Media/webtorrent "$@"
+}
+
+function pushpath() {
+	while [ $# -gt 0 ]; do
+		[[ ":$PATH:" != *":$1:"* ]] && PATH="$1:$PATH"
+		shift
+	done
+
+	export PATH
+}

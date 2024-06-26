@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$INSTALL" = 1 ] ; then
+  brew install starship
+  
+  cd "$HOME" || return
+  stow -d .dotfiles -S starship 
+fi
+
+if ! which starship &> /dev/null; then
+  return
+fi
+
+eval "$(starship init zsh)"

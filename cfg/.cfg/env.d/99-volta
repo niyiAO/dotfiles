@@ -1,0 +1,7 @@
+#/bin/bash
+
+if [ ! -d "$HOME/.volta/bin" ] ; then
+  return
+fi
+
+pushpath "$HOME/.volta/bin"

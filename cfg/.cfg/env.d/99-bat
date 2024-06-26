@@ -1,0 +1,8 @@
+#/bin/bash
+
+if ! which bat &> /dev/null; then
+  return
+fi
+
+export PAGER="bat --style plain"
+export MANPAGER="sh -c 'col -bx | bat -pl man'"
