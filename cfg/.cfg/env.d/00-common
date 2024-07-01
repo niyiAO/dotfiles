@@ -10,7 +10,6 @@ alias clip="xclip -sel clip"
 alias tat='tmux new -As "$PWD"'
 alias tas='tmux new -ds "$PWD"'
 alias mmv='noglob zmv'
-alias cat='bat -p'
 alias lighthouse="lighthouse --chrome-flags='--headless' --throttling.cpuSlowdownMultiplier=2.0"
 alias mega-fetch="mega-ls | gum choose | parallel mega-get -q"
 alias xstream="X webtorrent --mpv"
