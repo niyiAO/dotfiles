@@ -8,6 +8,7 @@ function hist {
 	history 1 | fzf -1 --tac --no-sort ${1:+-q"$1"} | cut -d' ' -f 4-
 }
 
+export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=50000
 export SAVEHIST=50000
 
