@@ -4,16 +4,23 @@ if [ "$INSTALL" = 1 ]; then
 	git clone https://github.com/mattmc3/antidote.git ~/.local/share/antidote
 fi
 
-export HISTDUP=erase
-export HISTSIZE=10000
+function hist {
+	history 1 | fzf -1 --tac --no-sort ${1:+-q"$1"} | cut -d' ' -f 4-
+}
 
-setopt share_history
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
+export HISTSIZE=50000
+export SAVEHIST=50000
+
+setopt extended_history
+setopt hist_expire_dups_first
 setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
 setopt hist_ignore_space
+setopt hist_save_no_dups
 setopt hist_verify
+setopt inc_append_history
+setopt share_history
 
 setopt interactivecomments
 
