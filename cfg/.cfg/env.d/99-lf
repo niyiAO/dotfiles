@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function lf () {
+  cd "$(command lf -print-last-dir $@)"
+}

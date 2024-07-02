@@ -1,0 +1,42 @@
+set nopreview
+set ratios 1
+set icons
+set incsearch
+set incfilter
+
+cmd move-selected %{{mv $fx $PWD}}
+cmd copy-selected %{{cp $fx $PWD}}
+
+map y
+map d
+
+map c unselect
+map i invert
+
+map x %trash-put $fx
+map v :move-selected; unselect
+map p :copy-selected; unselect
+
+map / filter
+map <backspace2> setfilter ""
+
+map n
+cmd mkdir %mkdir -p "$@"
+
+cmd mkfile %{{
+	mkdir -p "$(dirname $1)" || exit 1
+	touch "$1" || exit 1
+	lf -remote "send $id select \"$1\""
+}}
+
+cmd mkedit ${{
+	mkdir -p "$(dirname $1)" || exit 1
+	$EDITOR "$1" || exit 1
+	lf -remote "send $id select \"$1\""
+}}
+
+map nd push :mkdir<space> 
+map nf push :mkfile<space>
+map ne push :mkedit<space>
+
+map gw push :cd<space>~/Documents/workspace/
