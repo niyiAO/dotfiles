@@ -6,4 +6,5 @@ fi
 
 alias cat='bat -p'
 export PAGER="bat --style plain"
+export DELTA_PAGER=$PAGER
 export MANPAGER="sh -c 'col -bx | bat -pl man'"

@@ -1,6 +1,10 @@
 [user]
 	email = deniyi.adeosun@gmail.com
 	name = Niyi Adeosun
+
+[core]
+	pager = delta
+
 [alias]
 	graph = log --graph --oneline --decorate=short
 	list = diff --name-only
@@ -14,7 +18,16 @@
 	defaultBranch = main
 
 [diff]
-	external = difft
+	tool = difftastic
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+	difftool = true
 
 [pull]
 	rebase = false

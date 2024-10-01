@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$INSTALL" = 1 ] ; then
+  brew install lazygit
+fi
+
+if ! which lazygit &> /dev/null; then
+  return
+fi
+
+alias lg=lazygit
+
