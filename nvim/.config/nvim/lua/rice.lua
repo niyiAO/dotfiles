@@ -1,6 +1,6 @@
 vim.opt.laststatus = 2
 
-vim.opt.statusline = 
+vim.opt.statusline =
   " %f" ..
   " %#WildMenu#%( %M%r %)" ..
   "%#Ignore#%=%#StatusLine#" ..
@@ -8,14 +8,12 @@ vim.opt.statusline =
 
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "┆ ",
+  tab = "┆ ", -- good options ┊ ┆ │
 }
 
 vim.cmd([[
 set notermguicolors
-highlight EndOfBuffer cterm=none ctermfg=0
-highlight StatusLine cterm=bold,reverse ctermfg=9 ctermbg=0
-highlight LineNr ctermbg=none
+colorscheme noctu
 ]])
 
-
+vim.opt.signcolumn = "yes:1"

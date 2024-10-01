@@ -29,34 +29,12 @@ nmap('<C-j>', '}')
 nmap('<Leader>y', '"+y')
 nmap('<Leader>p', '"+p')
 nmap('<Leader><Leader>p', '"*p')
+nmap('<Leader>z', 'za')
 nmap('<Leader><Leader>s', '<CMD>source $MYVIMRC<CR>')
 nmap('<Leader><Leader><Leader>', '<nop>')
 nmap('<Leader><Tab>', '<C-^>')
 
 vmap('*', 'y/<C-r>"<CR>')
 
--- autoclose and position cursor to write text inside
-imap("'", "''<left>")
-imap("`", "``<left>")
-imap('"', '""<left>')
-imap('(', '()<left>')
-imap('[', '[]<left>')
-imap('{', '{}<left>')
-
--- autoclose and ignore
-imap("''", "''")
-imap('``', '``')
-imap('""', '""')
-imap('()', '()')
-imap('[]', '[]')
-imap('{}', '{}')
-
--- autoclose 2 lines below and position cursor in the middle 
-imap("'<CR>", "'<CR>'<ESC>O")
-imap("`<CR>", "`<CR>`<ESC>O")
-imap('"<CR>', '"<CR>"<ESC>O')
-imap("(<CR>", "(<CR>)<ESC>O")
-imap("[<CR>", "[<CR>]<ESC>O")
-imap("{<CR>", "{<CR>}<ESC>O")
-
 nmap('<BS>', '<CMD>Oil<CR>')
+
