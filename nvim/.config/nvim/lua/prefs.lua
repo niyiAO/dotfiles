@@ -13,7 +13,8 @@ vim.opt.writebackup = false
 vim.opt.undofile = true
 vim.opt.foldenable = false
 
-local undodir = '/tmp/.vim-undo-dir'
+local tmpdir = os.getenv('TMPDIR') or '/tmp'
+local undodir = tmpdir .. '/.vim-undo-dir'
 vim.opt.undodir = undodir
 os.execute('mkdir -p ' .. undodir)
 
