@@ -14,6 +14,12 @@
 	pub = publish
 	fix = commit --fixup
 	continue = !git rebase --continue || git merge --continue || git cherry-pick --continue
+
+[absorb]
+	oneFixupPerCommit = true
+	autoStageIfNothingStaged = true
+	fixupTargetAlwaysSHA = true
+
 [init]
 	defaultBranch = main
 
