@@ -66,7 +66,6 @@ return {
 			nmap("<leader>gr", vim.lsp.buf.references)
 			nmap("<leader>ca", vim.lsp.buf.code_action)
 			nmap("<space>rn", vim.lsp.buf.rename)
-			
 		end
 	},
 	{

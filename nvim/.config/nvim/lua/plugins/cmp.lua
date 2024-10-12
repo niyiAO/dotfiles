@@ -14,6 +14,9 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
 			"onsails/lspkind-nvim",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			if not vim.fn.exists("g:loaded_cmp") then
@@ -24,9 +27,15 @@ return {
 
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
 				completion = { autocomplete = false },
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
@@ -64,8 +73,9 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lsp",               keyword_length = 3 },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "buffer",                 keyword_length = 3 },
+					-- { name = "buffer",                 keyword_length = 3 },
 					{ name = "calc" },
+					{ name = "luasnip" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
