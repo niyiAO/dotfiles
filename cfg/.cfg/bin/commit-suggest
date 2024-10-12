@@ -8,6 +8,9 @@ if [ -z "$diff" ]; then
 fi
 
 nudge=${*:+"the author summarizes the changes as: $*"}
+branchlog=$(git log HEAD...main --pretty=format:%s )
+branchlog=${branchlog:+"For context, the commit messages in the current branch are:
+$branchlog"}
 
 defaultPrompt="The commit message should be in the conventional commit format.
 That is the format 'type(scope): message'.
@@ -21,6 +24,8 @@ it should use present tense (never past tense), should use simple, direct langua
 and be written in imperative mood. Avoid wordy, long descriptions (e.g. 'make use of' instead of just 'use')
 The current branch name is '$(git rev-parse --abbrev-ref HEAD)' if needed for context.
 $nudge.
+$branchlog.
+
 IF THE DIFF IS EMPTY RESPOND: 'No changes found'
 
 The current diff is:
@@ -29,7 +34,7 @@ $diff"
 message=""
 
 function generateMessage() {
-	message=$(gum spin -s line --title Generating --show-output -- mods --no-cache -q -m gpt-4 -f "$prompt")
+	message=$(gum spin -s line --title Generating --show-output -- mods --no-cache -q -m 4o -f "$prompt")
 }
 
 
