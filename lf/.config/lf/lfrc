@@ -4,8 +4,23 @@ set icons
 set incsearch
 set incfilter
 
-cmd move-selected %{{mv $fx $PWD}}
-cmd copy-selected %{{cp $fx $PWD}}
+cmd move-selected %{{
+	while IFS= read -r file; do
+		mv "$file" "$PWD"
+	done <<< "$fx"
+}}
+
+cmd copy-selected %{{
+	while IFS= read -r file; do
+		cp "$file" "$PWD"
+	done <<< "$fx"
+}}
+
+cmd trash-selected %{{
+	while IFS= read -r file; do
+		trash-put "$file"
+	done <<< "$fx"
+}}
 
 map y
 map d
@@ -13,7 +28,7 @@ map d
 map c unselect
 map i invert
 
-map x %trash-put $fx
+map x :trash-selected
 map v :move-selected; unselect
 map p :copy-selected; unselect
 
@@ -39,4 +54,4 @@ map nd push :mkdir<space>
 map nf push :mkfile<space>
 map ne push :mkedit<space>
 
-map gw push :cd<space>~/Documents/workspace/
+map gw push :cd<space>~/workspace/<enter>

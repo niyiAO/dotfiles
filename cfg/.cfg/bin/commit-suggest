@@ -34,7 +34,7 @@ $diff"
 message=""
 
 function generateMessage() {
-	message=$(gum spin -s line --title Generating --show-output -- mods --no-cache -q -m 4o -f "$prompt")
+	message=$(gum spin -s line --title Generating --show-output -- mods --no-cache -q -m claude -f "$prompt")
 }
 
 

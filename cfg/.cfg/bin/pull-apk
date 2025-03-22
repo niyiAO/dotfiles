@@ -1,7 +1,12 @@
 #!/bin/bash
 
+name=$1
 package=$(adb shell pm list packages | gum filter)
-package_path=$(adb shell pm path "${package#package:}")
+package_path=$(adb shell pm path "${package#package:}" | gum filter --select-if-one)
 
-adb pull "${package_path#package:}" /tmp/base.apk
-apktool d /tmp/base.apk -o app
+if [ -z "$name" ]; then
+  name=$(gum input --placeholder="file name eg. base.apk")
+fi 
+
+adb pull "${package_path#package:}" "$name" || exit 1
+apktool d "$name" -o "${name%.apk}"
