@@ -4,10 +4,6 @@ if [ "$INSTALL" = 1 ]; then
 	git clone https://github.com/mattmc3/antidote.git ~/.local/share/antidote
 fi
 
-function hist {
-	history 1 | fzf -1 --tac --no-sort ${1:+-q"$1"} | cut -d' ' -f 4-
-}
-
 function set_buffer() {
 	BUFFER="$(hist)"
 	zle reset-prompt

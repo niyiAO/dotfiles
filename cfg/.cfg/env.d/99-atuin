@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$INSTALL" = 1 ] ; then
+  brew install atuin
+fi
+
+if ! which atuin &> /dev/null; then
+  return
+fi
+
+eval "$(atuin init zsh --disable-up-arrow)"
