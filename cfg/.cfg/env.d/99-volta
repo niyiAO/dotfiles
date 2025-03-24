@@ -4,4 +4,7 @@ if [ ! -d "$HOME/.volta/bin" ] ; then
   return
 fi
 
+export NODE_VERSIONS="$HOME/.volta/tools/image/node"
+export NODE_VERSION_PREFIX=""
+
 pushpath "$HOME/.volta/bin"
