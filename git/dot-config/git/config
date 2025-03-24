@@ -1,5 +1,0 @@
-[user]
-	email = meisniyi@gmail.com
-	name = Adeniyi Adeosun
-[alias]
-	graph = log --graph --oneline –decorate=short
