@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$INSTALL" = 1 ] ; then
+  brew install just
+fi
+
+if ! which just &> /dev/null; then
+  return
+fi
+
+eval $(just --completions zsh)
+
