@@ -4,18 +4,56 @@ return {
 		config = true
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			automatic_installation = true,
-		},
-		dependencies = { "williamboman/mason.nvim" }
-	},
-	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = { "hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim" },
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+			local mason_lspconfig = require("mason-lspconfig")
+			mason_lspconfig.setup({
+				ensure_installed = { "tailwindcss", "ts_ls", "jsonls", "bashls", "yamlls", "html", "gopls", },
+				automatic_installation = true
+			})
+
+			mason_lspconfig.setup_handlers({
+				function(server_name)
+					local config = {
+						capabilities = capabilities,
+					}
+
+					if server_name == "lua_ls" then
+						config.on_init = function(client)
+							if client.workspace_folders then
+								local path = client.workspace_folders[1].name
+								if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+									return
+								end
+							end
+
+							client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+								runtime = {
+									version = 'LuaJIT'
+								},
+								diagnostics = {
+									disable = { "lowercase-global" }
+								},
+								workspace = {
+									checkThirdParty = false,
+									library = {
+										vim.env.VIMRUNTIME
+									}
+								}
+							})
+						end
+						config.settings = {
+							Lua = {}
+						}
+					end
+
+					require("lspconfig")[server_name].setup(config)
+				end,
+			})
 
 			local border = "rounded"
 
@@ -30,51 +68,6 @@ return {
 					border = border
 				}
 			)
-
-			local lsps = {
-				tailwindcss = { capabilities = capabilities },
-				ts_ls = { capabilities = capabilities },
-				jsonls = { capabilities = capabilities },
-				bashls = { capabilities = capabilities },
-				yamlls = { capabilities = capabilities },
-				html = { capabilities = capabilities },
-				gopls = { capabilities = capabilities },
-				lua_ls = {
-					capabilities = capabilities,
-					on_init = function(client)
-						if client.workspace_folders then
-							local path = client.workspace_folders[1].name
-							if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-								return
-							end
-						end
-
-						client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-							runtime = {
-								version = 'LuaJIT'
-							},
-							diagnostics = {
-								disable = { "lowercase-global" }
-							},
-							workspace = {
-								checkThirdParty = false,
-								library = {
-									vim.env.VIMRUNTIME
-								}
-							}
-						})
-					end,
-					settings = {
-						Lua = {}
-					}
-				}
-			}
-
-			local lspconfig = require("lspconfig")
-
-			for lsp, config in pairs(lsps) do
-				lspconfig[lsp].setup(config)
-			end
 
 			nmap("K", vim.lsp.buf.hover)
 			nmap("<leader>gd", vim.lsp.buf.definition)
